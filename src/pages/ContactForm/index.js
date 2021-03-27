@@ -15,7 +15,7 @@ function ContactForm() {
         action="/thanks"
         honeypotName="bot-field"
         onSuccess={(response, context) => {
-          navigate("/thanks")
+          // navigate("/thanks")
           console.log("Successfully sent form data to Netlify Server")
           context.formRef.current.reset()
         }}

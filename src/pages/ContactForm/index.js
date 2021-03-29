@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form"
 
 import "./styles.module.css"
 
-export default function NewsletterForm() {
+export default function ContactForm() {
   const { register, handleSubmit, reset, errors } = useForm({ mode: "onBlur" })
   const netlify = useNetlifyForm({
     name: "react-hook-form",
@@ -25,6 +25,13 @@ export default function NewsletterForm() {
 
   return (
     <div>
+      <div className="book__form">
+        <div className="u-margin-bottom-medium">
+          <h2 className="heading-secondary" style={{ fontSize: "4rem" }}>
+            お問い合わせ
+          </h2>
+        </div>
+      </div>
       <NetlifyFormProvider {...netlify}>
         <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
           <Honeypot />

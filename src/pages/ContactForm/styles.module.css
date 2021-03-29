@@ -88,8 +88,8 @@
   border-radius: 2px;
   background-color: rbga(#fff, 0.5);
   border: none;
-  border-bottom: 3px solid transparent;
-  width: 90%;
+  border-bottom: 5px solid transparent;
+  width: 100%;
   display: block;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;

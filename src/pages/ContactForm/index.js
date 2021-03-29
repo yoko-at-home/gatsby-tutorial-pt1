@@ -34,7 +34,7 @@ export default function NewsletterForm() {
           )}
           <p className="form__group">
             <div className="form__input">
-              {errors.name && "お名前の入力をお願いします"}
+              {errors.name && "入力してください"}
             </div>
             <input
               type="text"
@@ -52,7 +52,7 @@ export default function NewsletterForm() {
           </p>
           <p className="form__group">
             <div className="form__input">
-              {errors.email && "メールアドレスの入力をお願いします"}
+              {errors.email && "入力してください"}
             </div>
             <input
               placeholder="メールアドレス"
@@ -70,9 +70,13 @@ export default function NewsletterForm() {
             />
           </p>
           <p className="form__group">
+            <div className="form__input">
+              {errors.message && "入力してください"}
+            </div>
             <textarea
               className="form__input"
               rows="7"
+              id="message"
               name="message"
               placeholder={"メッセージ"}
               ref={register({ required: true, maxLength: 1000 })}

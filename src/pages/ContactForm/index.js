@@ -1,10 +1,11 @@
 import React, { Component } from "react"
 import { NetlifyForm, Honeypot } from "react-netlify-forms"
+import { useForm } from "react-hook-form"
 
 import "./styles.module.css"
 
 function ContactForm() {
-
+const { errors, register, handleSubmit } = useForm()
   return (
     <div>
       <NetlifyForm
@@ -19,11 +20,9 @@ function ContactForm() {
         {({ handleChange, success, error }) => (
           <>
             <Honeypot />
-            {success && <p>Thanks for contacting us!</p>}
+            {success && <p>お問い合わせありがとうございます。</p>}
             {error && (
-              <p>
-                Sorry, we could not reach our servers. Please try again later.
-              </p>
+              <p>サーバーに接続できません。時間をおいて再度お試しください。</p>
             )}
             <p className="form__group">
               <input
@@ -32,7 +31,14 @@ function ContactForm() {
                 name="name"
                 placeholder={"お名前"}
                 onChange={handleChange}
+                ref={register({
+                  required: true,
+                  max: 255,
+                  min: 3,
+                  maxLength: 80,
+                })}
               />
+              {errors.name && "お名前の入力をお願いします"}
             </p>
             <p className="form__group">
               <input
@@ -41,7 +47,15 @@ function ContactForm() {
                 name="email"
                 placeholder={"メールアドレス"}
                 onChange={handleChange}
+                ref={register({
+                  required: true,
+                  max: 41,
+                  min: 4,
+                  maxLength: 255,
+                  pattern: /^\S+@\S+$/i,
+                })}
               />
+              {errors.email && "メールアドレスの入力をお願いします"}
             </p>
             <p className="form__group">
               <textarea
@@ -50,14 +64,17 @@ function ContactForm() {
                 name="message"
                 placeholder={"メッセージ"}
                 onChange={handleChange}
+                ref={register({
+                  required: true,
+                  max: 1000,
+                  min: 10,
+                  maxLength: 7,
+                })}
               />
             </p>
             <p className="form__group form-submit">
               <div className="form__group">
-                <button
-                  type="submit"
-                  className="btn btn--green"
-                >
+                <button type="submit" className="btn btn--green">
                   送信
                 </button>
               </div>
